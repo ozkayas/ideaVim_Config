@@ -1,0 +1,81 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+" See this site for much of the explanations : https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
+
+" esc in insert & visual mode
+inoremap kj <esc>
+vnoremap kj <esc>
+" esc in command mode
+cnoremap kj <C-C>
+
+" This mapping should be before plugins
+let mapleader = "\<Space>"
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=10
+
+" Do incremental searching.
+set incsearch
+
+set number relativenumber
+"set hlsearch
+set easymotion
+"set quickscope
+set surround
+set highlightedyank
+set sneak
+set nerdtree
+
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+""" These commands are set at upper using set commands
+" Highlight copied text
+" Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+" Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-surround'
+
+" Jump between methods
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+" Move between open tabs, sethandler amaci IDE arayuzu yerine buradan ayarlari devralmak
+sethandler <c-l> a:vim
+sethandler <c-h> a:vim
+sethandler <c-;> a:vim
+nnoremap <c-l> :action NextTab<CR>
+nnoremap <c-h> :action PreviousTab<CR>
+nnoremap <c-;> :action QuickFixes<CR>
+
+" Comment lines
+map <leader>c <action>(CommentByLineComment)
+
+" Open NERDTree (use q to exit)
+"map <leader>f :NERDTreeToggle<CR>
+"map <leader>x :NERDTreeToggle<CR>
+" Opens the active file in nerdTree
+sethandler <leader>1 a:vim
+nnoremap <leader>1 :NERDTreeFind<CR>
+
+
+
+
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
